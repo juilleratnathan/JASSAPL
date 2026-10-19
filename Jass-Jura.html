@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#174e40"><title>Jass Jura — Gestion de tournoi</title><style>:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;color:#213d35;background:#f5f6f2;font-synthesis:none;--green:#205e49;--muted:#748078;--border:#dce3da}*{box-sizing:border-box}body{margin:0}header{height:100px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding:0 max(5vw,24px);background:#fff}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;font-size:24px;font-weight:750;letter-spacing:-.8px}.brand-icon{background:var(--green);color:#fff;border-radius:12px;width:46px;height:48px;display:grid;place-items:center;font-size:32px}.brand small{display:block;font-size:9px;letter-spacing:2px;margin-top:3px;font-weight:600;color:var(--muted)}.badge{font-size:12px;background:#f1f5ee;padding:9px 13px;border-radius:20px;color:#47664d}main{max-width:1250px;margin:auto;padding:42px 32px 65px}.intro{text-align:center;margin:10px auto 40px}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:750;color:#64836a}h1{font-size:46px;line-height:1.15;letter-spacing:-1.9px;margin:16px 0}p{line-height:1.7;font-size:14px}.intro p{color:var(--muted);font-size:16px}h2{font-size:19px;letter-spacing:-.5px;margin:0 0 12px}.setup-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;max-width:970px;margin:auto}.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 5px 20px #213d3503}.step{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:8px;background:#edf3e9;color:var(--green);font-size:13px;margin-right:8px}.muted{color:var(--muted);font-size:12px}label{display:block;font-size:12px;font-weight:650;margin-top:20px}input,textarea,select{font:inherit;color:inherit;border:1px solid #d8dfd7;background:#fbfcfa;border-radius:8px;padding:12px;width:100%;margin-top:8px;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #205e4915}textarea{resize:vertical;line-height:1.7}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}button{font:inherit;font-size:12px;font-weight:650;border-radius:8px;cursor:pointer;padding:12px 16px;border:1px solid transparent;transition:background .15s}button:hover{filter:brightness(.94)}button:focus-visible{outline:3px solid #8aa98d;outline-offset:3px}.primary{background:var(--green);color:white}form .primary{width:100%;display:flex;justify-content:space-between;margin-top:20px}.secondary{background:#fff;border-color:var(--border);color:#395647}button:disabled{opacity:.5;cursor:not-allowed}.guide{background:#f0f3eb;box-shadow:none;border-color:#e2e8da}.guide ol{list-style:none;counter-reset:steps;padding:0}.guide li{position:relative;padding-left:38px;margin-top:30px;counter-increment:steps}.guide li:before{content:counter(steps);position:absolute;left:0;top:0;border:1px solid #cbd7c2;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:11px;color:var(--green)}strong{font-size:13px}.guide p{font-size:12px;color:#6e7b6c;margin:5px 0}.save-note{display:flex;gap:16px;padding:28px 12px}.save-note>span{font-size:26px;color:#6c8a70}.save-note p{font-size:12px;color:var(--muted)}footer{border-top:1px solid var(--border);display:flex;justify-content:space-between;padding:25px 5vw;color:#7d8c7b;font-size:11px}footer span{color:#929c91}.tournament-heading{display:flex;justify-content:space-between;gap:24px;align-items:center}.tournament-heading h1{font-size:36px}.actions{display:flex;gap:8px;flex-wrap:wrap}.save-state{font-size:12px;color:#64836a;margin:12px 0 26px}.workspace{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}.round-heading{display:flex;align-items:center;justify-content:space-between}.round-heading label{margin:0;display:flex;align-items:center;gap:10px}.round-heading select{width:80px;margin:0}.match{border:1px solid var(--border);border-radius:10px;padding:17px;margin:16px 0}.match h3{font-size:13px;margin:0 0 8px}.match-grid{display:grid;grid-template-columns:1fr 90px;gap:8px 12px}.match-grid label{margin:0}.match-grid input,.match-grid select{margin-top:5px;padding:10px;min-width:0}.match-status{font-size:12px;margin:12px 0 0}.valid{color:#28704a}.invalid{color:#ad402b}.pending{color:#7c8477}.match.invalid{border-color:#dfa38f;background:#fffaf7}.round-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}table{width:100%;border-collapse:collapse;text-align:left;font-size:12px;margin-top:22px}th{font-weight:500;color:var(--muted);font-size:10px;padding:12px 5px;border-bottom:1px solid var(--border)}td{padding:15px 5px;border-bottom:1px solid #edf0e9}td:last-child,th:last-child{text-align:right}td:last-child{font-weight:750;color:var(--green)}td:nth-child(2){overflow-wrap:anywhere}tbody tr:first-child{background:#f3f6ee}#notice:not(:empty){padding:14px;background:#fff1dc;border:1px solid #e2bf80;border-radius:8px;margin-bottom:20px;font-size:13px}[hidden]{display:none!important}@media(max-width:850px){.workspace,.setup-grid{grid-template-columns:1fr}.tournament-heading{align-items:start;flex-direction:column}.intro h1{font-size:38px}.intro p{font-size:14px}}@media(max-width:500px){header{height:80px;padding:0 18px}.badge{display:none}main{padding:25px 16px 40px}.card{padding:20px}.intro h1{font-size:32px}.desktop{display:none}.match-grid{grid-template-columns:minmax(0,1fr) 78px}.two{gap:10px}footer span{display:none}.tournament-heading h1{font-size:29px}.round-footer{align-items:start;flex-direction:column}}
+</style></head>
+<body>
+<header><a href="#" class="brand"><span class="brand-icon">♣</span><span>Jass Jura<small>LE TOURNOI, SIMPLEMENT</small></span></a><span class="badge">157 points · Sans annonces</span></header>
+<main><div id="notice" role="status" aria-live="polite"></div>
+<section id="welcome"><div class="intro"><span class="eyebrow">À VOUS DE JOUER</span><h1>Les cartes en main.<br>Les comptes au clair.</h1><p>Organisez votre tournoi de jass, saisissez les résultats<br class="desktop"> et suivez le classement. Tout reste sur votre ordinateur.</p></div>
+<div class="setup-grid"><section class="card"><h2><span class="step">1</span> Préparer le tournoi</h2><p class="muted">Quelques informations, et la première passe peut commencer.</p><form id="create"><label>Nom du tournoi<input name="name" required maxlength="100" placeholder="Ex. Tournoi du village" value="Tournoi de jass"></label><div class="two"><label>Nombre de passes<input name="passes" type="number" min="1" max="100" value="4" required></label><label>Parties par passe<input name="games" type="number" min="1" max="100" value="12" required></label></div><label>Équipes <span class="muted">· une équipe par ligne</span><textarea name="teams" required rows="6" placeholder="Les As du Jura&#10;Les Rois du trèfle&#10;Les Atouts&#10;Les Belles Cartes"></textarea></label><p id="team-count" class="muted">Ajoutez au moins 2 équipes, en nombre pair.</p><button class="primary" type="submit">Créer le tournoi <span>→</span></button></form></section><aside><section class="card guide"><h2>Une passe, trois étapes</h2><ol><li><strong>Indiquez les rencontres</strong><p>Après le tirage physique, associez deux équipes à chaque table.</p></li><li><strong>Saisissez les deux totaux</strong><p>Nous vérifions leur somme : 1 884 points pour 12 parties.</p></li><li><strong>Consultez le classement</strong><p>Les scores vérifiés s’ajoutent automatiquement au total des équipes.</p></li></ol></section><section class="save-note"><span>↧</span><div><strong>Votre tournoi vous appartient</strong><p>Sauvegarde automatique dans ce navigateur. Exportez aussi un fichier sur votre bureau pour le conserver.</p><button class="secondary import-button">Ouvrir un tournoi enregistré</button></div></section></aside></div></section>
+<section id="tournament" hidden><div class="tournament-heading"><div><span class="eyebrow">VOTRE TOURNOI</span><h1 id="tournament-name"></h1><p id="summary" class="muted"></p></div><div class="actions"><button id="export" class="primary">↓ Enregistrer un fichier</button><button class="secondary import-button">Ouvrir</button><button id="new" class="secondary">Nouveau tournoi</button></div></div><div id="save-state" class="save-state"></div><div class="workspace"><section class="card results"><div class="round-heading"><h2>Résultats par table</h2><label>Passe<select id="round"></select></label></div><p id="round-help" class="muted"></p><div id="matches"></div><div class="round-footer"><span id="progress"></span><button id="next" class="primary">Passe suivante →</button></div></section><aside class="card standings"><span class="eyebrow">AU FIL DU TOURNOI</span><h2>Classement général</h2><p class="muted">Seuls les résultats complets et vérifiés sont comptabilisés. Les égalités partagent le même rang.</p><table><thead><tr><th>Rang</th><th>Équipe</th><th>Passes</th><th>Points</th></tr></thead><tbody id="ranking"></tbody></table><p id="overall" class="muted"></p></aside></div></section>
+<input id="file" type="file" accept=".json,application/json" hidden></main><footer>♣ Jass jurassien <span>Sans annonces. Sans complication.</span></footer><script>function validate(t) {
+  if (!t || t.version !== 1 || typeof t.name !== 'string' || !t.name.trim() || !Number.isInteger(t.passes) || t.passes < 1 || t.passes > 100 || !Number.isInteger(t.games) || t.games < 1 || t.games > 100 || !Array.isArray(t.teams) || t.teams.length < 2 || t.teams.length % 2 || t.teams.length > 200 || t.teams.some(x => typeof x !== 'string' || !x.trim()) || new Set(t.teams).size !== t.teams.length || !Array.isArray(t.rounds) || t.rounds.length !== t.passes) throw Error('Fichier de tournoi invalide.');
+  for (const round of t.rounds) {
+    if (!Array.isArray(round) || round.length !== t.teams.length / 2) throw Error('Nombre de tables invalide.');
+    const used = [];
+    for (const m of round) {
+      for (const side of ['a','b']) {
+        if (m[side] !== '' && (!Number.isInteger(m[side]) || m[side] < 0 || m[side] >= t.teams.length)) throw Error('Équipe invalide.');
+        if (m[side] !== '') used.push(m[side]);
+      }
+      for (const s of ['sa','sb']) if (m[s] !== '' && (!Number.isInteger(m[s]) || m[s] < 0 || m[s] > t.games * 157)) throw Error('Score invalide.');
+    }
+    if (new Set(used).size !== used.length) throw Error('Une équipe ne peut jouer qu’à une table par passe.');
+  }
+  return t;
+}
+function matchState(m, games) {
+  if (m.a === '' || m.b === '' || m.sa === '' || m.sb === '') return 'pending';
+  return m.a !== m.b && m.sa + m.sb === games * 157 ? 'valid' : 'invalid';
+}
+function ranking(t) {
+  const rows = t.teams.map((name,id) => ({id,name,points:0,played:0}));
+  for (const round of t.rounds) for (const m of round) if (matchState(m,t.games) === 'valid') {
+    rows[m.a].points += m.sa; rows[m.b].points += m.sb; rows[m.a].played++; rows[m.b].played++;
+  }
+  return rows.sort((a,b) => b.points-a.points || a.name.localeCompare(b.name,'fr'));
+}
+function createTournament(name, passes, games, teams) {
+  return validate({version:1,name:name.trim(),passes,games,teams,rounds:Array.from({length:passes},()=>Array.from({length:teams.length/2},()=>({a:'',b:'',sa:'',sb:''})))});
+}
+
+const $ = s => document.querySelector(s);
+const key='jass-jura-tournament-v1';
+let tournament=null, round=0, saved=false;
+function notice(message=''){ $('#notice').textContent=message; }
+function persist(){
+  try {localStorage.setItem(key,JSON.stringify(tournament)); saved=true;} catch {saved=false;}
+  $('#save-state').textContent=saved?'✓ Sauvegardé automatiquement dans ce navigateur · Pensez à enregistrer un fichier sur votre bureau.':'⚠ Sauvegarde automatique indisponible. Enregistrez un fichier pour conserver vos résultats.';
+}
+function option(value,label,selected=false){const o=document.createElement('option');o.value=value;o.textContent=label;o.selected=selected;return o;}
+function render(){
+  $('#welcome').hidden=!!tournament; $('#tournament').hidden=!tournament;
+  if(!tournament)return;
+  $('#tournament-name').textContent=tournament.name;
+  $('#summary').textContent=`${tournament.teams.length} équipes · ${tournament.passes} passes · ${tournament.games} parties par passe · ${tournament.games*157} points par table`;
+  $('#round').replaceChildren(...tournament.rounds.map((_,i)=>option(i,`${i+1}`,i===round)));
+  $('#round-help').textContent=`Reportez le tirage des tables, puis les deux totaux. La somme doit être de ${tournament.games*157} points. Les deux scores sont saisis indépendamment pour repérer les erreurs.`;
+  $('#matches').replaceChildren();
+  tournament.rounds[round].forEach((m,i)=>{
+    const card=document.createElement('article');card.className='match';
+    const heading=document.createElement('h3');heading.textContent=`Table ${i+1}`;card.append(heading);
+    const grid=document.createElement('div');grid.className='match-grid';
+    for(const side of ['a','b']){
+      const label=document.createElement('label');label.textContent=`Équipe ${side.toUpperCase()}`;
+      const select=document.createElement('select');select.setAttribute('aria-label',`Table ${i+1}, équipe ${side.toUpperCase()}`);
+      select.append(option('','Choisir une équipe',m[side]===''));
+      tournament.teams.forEach((name,id)=>{const o=option(id,name,m[side]===id);o.disabled=tournament.rounds[round].some((row,j)=>['a','b'].some(s=>!(j===i&&s===side)&&row[s]===id));select.append(o);});
+      select.addEventListener('change',()=>{m[side]=select.value===''?'':Number(select.value);persist();render();});label.append(select);grid.append(label);
+      const scoreLabel=document.createElement('label');scoreLabel.textContent='Points';
+      const input=document.createElement('input');input.type='number';input.min=0;input.max=tournament.games*157;input.step=1;input.inputMode='numeric';input.placeholder='—';input.value=m['s'+side];input.setAttribute('aria-label',`Table ${i+1}, points équipe ${side.toUpperCase()}`);
+      input.addEventListener('input',()=>{
+        const value=input.value===''?'':Number(input.value);
+        if(value!==''&&(!Number.isInteger(value)||value<0||value>tournament.games*157)) {input.setCustomValidity(`Entrez un entier entre 0 et ${tournament.games*157}.`);input.reportValidity();m['s'+side]='';}else{input.setCustomValidity('');m['s'+side]=value;}
+        persist();refresh();
+      }); scoreLabel.append(input);grid.append(scoreLabel);
+    }
+    card.append(grid);const status=document.createElement('p');status.className='match-status';status.setAttribute('aria-live','polite');card.append(status);$('#matches').append(card);
+  });refresh();
+}
+function refresh(){
+  let complete=0;
+  tournament.rounds[round].forEach((m,i)=>{
+    const state=matchState(m,tournament.games),card=$('#matches').children[i];card.className=`match ${state}`;
+    let text='En attente des équipes et des deux scores.';
+    if(state==='valid'){text=`✓ Vérifié · ${m.sa} + ${m.sb} = ${tournament.games*157} points`;complete++;}
+    else if(m.sa!==''&&m.sb!==''){
+      const delta=m.sa+m.sb-tournament.games*157;
+      text=delta?`À corriger · ${m.sa+m.sb} points au lieu de ${tournament.games*157} (${delta>0?'+':''}${delta}).`:'Scores corrects · choisissez les deux équipes.';
+    }
+    card.querySelector('.match-status').textContent=text;
+  });
+  $('#progress').textContent=`${complete} / ${tournament.teams.length/2} tables vérifiées`;
+  $('#next').hidden=round===tournament.passes-1;$('#next').disabled=complete!==tournament.teams.length/2;
+  const rows=ranking(tournament);let previous=null,position=0;$('#ranking').replaceChildren();
+  rows.forEach((r,i)=>{if(r.points!==previous)position=i+1;previous=r.points;const tr=document.createElement('tr');for(const v of [position,r.name,r.played,r.points.toLocaleString('fr-CH')]){const td=document.createElement('td');td.textContent=v;tr.append(td);}$('#ranking').append(tr);});
+  const completed=tournament.rounds.filter(r=>r.every(m=>matchState(m,tournament.games)==='valid')).length;
+  $('#overall').textContent=completed===tournament.passes?'✓ Tournoi terminé : toutes les passes sont vérifiées.':`${completed} / ${tournament.passes} passes entièrement vérifiées.`;
+}
+$('#create').addEventListener('submit',e=>{
+  e.preventDefault();const data=new FormData(e.target);
+  try{const teams=data.get('teams').split('\n').map(s=>s.trim()).filter(Boolean);
+    if(teams.length<2||teams.length%2)throw Error('Ajoutez au moins deux équipes, en nombre pair.');
+    if(new Set(teams.map(s=>s.toLocaleLowerCase('fr'))).size!==teams.length)throw Error('Chaque équipe doit avoir un nom différent.');
+    tournament=createTournament(data.get('name'),Number(data.get('passes')),Number(data.get('games')),teams);round=0;notice();render();persist();window.scrollTo(0,0);
+  }catch(error){notice(error.message);}
+});
+$('#create textarea').addEventListener('input',e=>{const count=e.target.value.split('\n').filter(s=>s.trim()).length;$('#team-count').textContent=`${count} équipes · ${count%2?'Ajoutez une équipe pour obtenir un nombre pair.':`${count/2} tables par passe`}`;});
+$('#round').addEventListener('change',e=>{round=Number(e.target.value);render();});
+$('#next').addEventListener('click',()=>{round++;render();window.scrollTo(0,0);});
+$('#export').addEventListener('click',()=>{
+  const url=URL.createObjectURL(new Blob([JSON.stringify(tournament,null,2)],{type:'application/json'}));
+  const a=document.createElement('a');a.href=url;a.download=`${tournament.name.replace(/[^\p{L}\p{N}_-]+/gu,'-')}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  notice('Fichier de sauvegarde préparé. Retrouvez-le dans vos téléchargements, ou choisissez le Bureau si votre navigateur propose un emplacement.');
+});
+for(const button of document.querySelectorAll('.import-button'))button.addEventListener('click',()=>$('#file').click());
+$('#file').addEventListener('change',async e=>{
+  const file=e.target.files[0];if(!file)return;
+  try{
+    if(file.size>5_000_000)throw Error('Ce fichier est trop volumineux (maximum 5 Mo).');
+    const imported=validate(JSON.parse(await file.text()));
+    if(tournament&&!confirm('Ouvrir ce fichier remplacera le tournoi actuel dans le navigateur. Avez-vous enregistré le tournoi actuel si vous souhaitez le conserver ?'))return;
+    tournament=imported;round=0;render();persist();notice('Tournoi ouvert. Vous pouvez reprendre la saisie.');
+  }catch(error){notice(`Impossible d’ouvrir le tournoi : ${error.message}`);}finally{e.target.value='';}
+});
+$('#new').addEventListener('click',()=>{
+  if(!confirm('Créer un nouveau tournoi ? Enregistrez d’abord un fichier si vous souhaitez conserver le tournoi actuel.'))return;
+  try{localStorage.removeItem(key);}catch{notice('Impossible d’effacer la sauvegarde du navigateur.');return;}
+  tournament=null;round=0;render();notice();
+});
+try{const raw=localStorage.getItem(key);if(raw){tournament=validate(JSON.parse(raw));render();persist();}}catch{notice('La sauvegarde du navigateur est inaccessible ou invalide. Vous pouvez ouvrir un fichier de tournoi ou en créer un nouveau.');}
+</script></body></html>
