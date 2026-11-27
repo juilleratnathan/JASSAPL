@@ -14,20 +14,25 @@ function render(){
   $('#tournament-name').textContent=tournament.name;
   $('#summary').textContent=`${tournament.teams.length} équipes · ${tournament.passes} passes · ${tournament.games} parties par passe · ${tournament.games*157} points par table`;
   $('#round').replaceChildren(...tournament.rounds.map((_,i)=>option(i,`${i+1}`,i===round)));
-  $('#round-help').textContent=`Reportez le tirage des tables, puis les deux totaux. La somme doit être de ${tournament.games*157} points. Les deux scores sont saisis indépendamment pour repérer les erreurs.`;
+  $('#round-help').textContent=`Pour chaque place, sélectionnez l’équipe qui a tiré ce numéro, puis saisissez ses points. La somme doit être de ${tournament.games*157} points. Les deux scores sont saisis indépendamment pour repérer les erreurs.`;
   $('#matches').replaceChildren();
   tournament.rounds[round].forEach((m,i)=>{
     const card=document.createElement('article');card.className='match';
-    const heading=document.createElement('h3');heading.textContent=`Table ${i+1}`;card.append(heading);
+    const firstPlace = 2 * i + 1;
+    const secondPlace = firstPlace + 1;
+    const heading = document.createElement('h3');
+    heading.textContent = `Places ${firstPlace} et ${secondPlace}`;
+    card.append(heading);
     const grid=document.createElement('div');grid.className='match-grid';
     for(const side of ['a','b']){
-      const label=document.createElement('label');label.textContent=`Équipe ${side.toUpperCase()}`;
-      const select=document.createElement('select');select.setAttribute('aria-label',`Table ${i+1}, équipe ${side.toUpperCase()}`);
+      const place = side === 'a' ? firstPlace : secondPlace;
+      const label=document.createElement('label');label.textContent=`Place ${place}`;
+      const select=document.createElement('select');
       select.append(option('','Choisir une équipe',m[side]===''));
       tournament.teams.forEach((name,id)=>{const o=option(id,name,m[side]===id);o.disabled=tournament.rounds[round].some((row,j)=>['a','b'].some(s=>!(j===i&&s===side)&&row[s]===id));select.append(o);});
       select.addEventListener('change',()=>{m[side]=select.value===''?'':Number(select.value);persist();render();});label.append(select);grid.append(label);
       const scoreLabel=document.createElement('label');scoreLabel.textContent='Points';
-      const input=document.createElement('input');input.type='number';input.min=0;input.max=tournament.games*157;input.step=1;input.inputMode='numeric';input.placeholder='—';input.value=m['s'+side];input.setAttribute('aria-label',`Table ${i+1}, points équipe ${side.toUpperCase()}`);
+      const input=document.createElement('input');input.type='number';input.min=0;input.max=tournament.games*157;input.step=1;input.inputMode='numeric';input.placeholder='—';input.value=m['s'+side];input.setAttribute('aria-label',`Points de la place ${place}`);
       input.addEventListener('input',()=>{
         const value=input.value===''?'':Number(input.value);
         if(value!==''&&(!Number.isInteger(value)||value<0||value>tournament.games*157)) {input.setCustomValidity(`Entrez un entier entre 0 et ${tournament.games*157}.`);input.reportValidity();m['s'+side]='';}else{input.setCustomValidity('');m['s'+side]=value;}
